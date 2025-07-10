@@ -215,7 +215,7 @@ List ProxG_dfs_w(arma::vec& y, arma::mat& X, arma::vec& Xty, arma::mat& sample_o
         tmp_g.reshape(n,p);
         tmp_g = orderMatrix1(tmp_g, sample_order_list);
         
-        for(uint i=0; i<p; i++){
+        for(unsigned int i=0; i<p; i++){
             tmp_g.col(i);
             Btmp.col(i) = onedTVw_c(vectorise(tmp_g.col(i)) * ilambda_col2, edge_weight_list.col(i) * lambda_row * iLuse * ilambda_col2);
         }
@@ -231,7 +231,7 @@ List ProxG_dfs_w(arma::vec& y, arma::mat& X, arma::vec& Xty, arma::mat& sample_o
         PS1 = sum(sqrt(sum(pow(Bk,2),0)) * lambda_col * var_weight);
         PS2 = 0;
         
-        for(int i=0; i<p; i++){
+        for(unsigned int i=0; i<p; i++){
             for(int j=0; j<n-1; j++){
                 PS2 = PS2 + fabs(Bk(sample_order_list(j,i),i) - Bk(sample_order_list(j+1,i),i)) * edge_weight_list(j,i);
             }
